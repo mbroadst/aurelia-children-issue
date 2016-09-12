@@ -9,12 +9,14 @@ import {
 
 @noView
 @processContent(false)
-@customElement('my-list-element')
+@customElement('au-column')
 @inject(Element, ViewCompiler)
-export class MyListElement {
+export class Column {
+  @bindable header
+
   constructor(element, viewCompiler) {
-    this.viewFactory =
-      viewCompiler.compile(`<template>${element.innerHTML}</template>`);
+    let template = `<template>${element.innerHTML}</template>`;
+    this.viewFactory = viewCompiler.compile(template);
     element.innerHTML = '';
   }
 }
